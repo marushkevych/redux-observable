@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {loadStories, clear} from '../actions'
+import {loadStories, clear} from '../actions/storiesActions'
 
 export function Stories(props) {
   return (
@@ -27,7 +27,7 @@ function Story({title}) {
 }
 
 function mapState(state) {
-  return state;
+  return state.storiesState;
 }
 
 function mapDispatch(dispatch) {

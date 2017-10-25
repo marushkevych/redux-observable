@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import {createStore, applyMiddleware, compose} from 'redux'
+import {createStore, applyMiddleware, compose, combineReducers} from 'redux'
 import {Provider} from 'react-redux'
 import {createEpicMiddleware} from 'redux-observable'
-import reducer from './reducers'
+import storiesReducer from './reducers/storiesReducer'
+import usersReducer from './reducers/usersRedicer'
 import {rootEpic} from './epics'
 
 const epicMiddleware = createEpicMiddleware(rootEpic)
@@ -14,7 +15,10 @@ const epicMiddleware = createEpicMiddleware(rootEpic)
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  reducer, 
+  combineReducers({
+    storiesState: storiesReducer, 
+    usersState: usersReducer
+  }), 
   composeEnhancers(
     applyMiddleware(epicMiddleware)
   )

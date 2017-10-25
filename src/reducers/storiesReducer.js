@@ -1,4 +1,4 @@
-import {CLEAR_STORIES, LOAD_STORIES} from "../actions/index";
+import {CLEAR_STORIES, LOAD_STORIES} from "../actions/storiesActions";
 
 const stories = [
   {
